@@ -24,7 +24,19 @@ export const {
     }
     ,
     callbacks: {
-       
+        async signIn({user,account}){
+            //allow auth eamil verification
+
+            if(account?.provider !== "credentials") return true;
+
+            const existingUser = await getUserById(user.id);
+
+            if(!existingUser?.emailVerified) return false;
+
+            //Todo add 2FA
+
+            return true;
+        },
         async session({token,session}){
             
 

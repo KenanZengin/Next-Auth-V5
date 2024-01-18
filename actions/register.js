@@ -5,6 +5,7 @@ import bcrypt from "bcrypt"
 import { RegisterSchema } from "@/schema";
 import { db } from "@/lib/db";
 import { getUserByEmail } from "@/data/user";
+import { generateVerificationToken } from "@/lib/tokens";
 
 export const register = async (values) => { 
     console.log(values);
@@ -29,11 +30,15 @@ export const register = async (values) => {
             email,
             password: hashPassword
         }
-    })
+    });
 
-    //Todo : send verifitication token email
+    const verificationToken = await generateVerificationToken(email)
 
-    return{success: "User created"}
+    
+
+    
+
+    return{success: "Confirmation email sent! "}
 
 
 }
