@@ -12,6 +12,7 @@ export const LoginSchema = z.object({
 });
 
 
+
 export const RegisterSchema = z.object({
     email: z.string({
         invalid_type_error:"Must be a string value!"
@@ -24,4 +25,15 @@ export const RegisterSchema = z.object({
     name: z.string().min(1,{
         message:"Name is required"
     })
+});
+
+
+
+export const ResetSchema = z.object({
+    email: z.string({
+        invalid_type_error:"Must be a string value!"
+    }).email({
+        message: "Email is required",
+    }),
+    
 });

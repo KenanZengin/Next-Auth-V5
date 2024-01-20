@@ -26,7 +26,6 @@ export const {
     callbacks: {
         async signIn({user,account}){
             //allow auth eamil verification
-
             if(account?.provider !== "credentials") return true;
 
             const existingUser = await getUserById(user.id);
