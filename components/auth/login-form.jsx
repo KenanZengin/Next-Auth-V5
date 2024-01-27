@@ -24,7 +24,10 @@ import { login } from "@/actions/login"
 export const LoginForm = () => {
 
     const searchParams = useSearchParams()
+    const callbackUrl = searchParams.get("callbackurl");
+
     const urlError = searchParams.get("error") === "OAuthAccountNotLinked" ? "Please already in use with different provider" : "";
+
     const [isPending,startTransition] = useTransition();
     const [error,setError] = useState("");
     const [success,setSuccess] = useState("");
@@ -44,7 +47,7 @@ export const LoginForm = () => {
         setSuccess("");
 
         startTransition(() => {
-            login(values)
+            login(values,callbackUrl)
                 .then((data) => {
                     if(data?.error){
                         form.reset();

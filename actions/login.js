@@ -14,7 +14,7 @@ import { getTwoFactorConfirmationByUserId } from "@/data/two-factor-confirmation
 
 
 
-export const login = async (values) => { // login formundan aldığımız verileri serverde işleme alıyoruz
+export const login = async (values,callbackUrl) => { // login formundan aldığımız verileri serverde işleme alıyoruz
     console.log(values);
     const validateFields = LoginSchema.safeParse(values);
 
@@ -97,7 +97,7 @@ export const login = async (values) => { // login formundan aldığımız verile
         await signIn("credentials",{
             email,
             password,
-            redirectTo:  DEFAULT_LOGIN_REDIRECT
+            redirectTo: callbackUrl ||  DEFAULT_LOGIN_REDIRECT
         })
     } catch (error) {
         if(error instanceof AuthError){
