@@ -1,0 +1,44 @@
+-shadui ile component mantığını uygalayabiliriz
+-components/ui altında özel componentler vardır. Bu özel componentlere kendimizde özellik ekleyebiliriz mesela Button için variant altında kenan:"bg-sky-500 text-bold" der ver Button da variant="kenan" der isek bu özellikleri kullanabiliriz global olarak
+-App altında ki klasörlerden sayfa olarak göstermek istemiyorsak başına "_" eklemeliyiz. Örnek olarak _components , url'e /components yazarsak 404 alırız
+-App altında ki klasör url'de gözükmesin ama içerisinde ki sayfa render olsun istersek klasörü "()" belirtmemiz gerekir. (app)/login dersek url'de login yazmamız yeterli olur.
+-Google fontları özel olarak her sayfaya ayrı ayrı import edebiliriz farklı fontlar için
+-export default sadece sayfalarda yap component mantığında sadece export yeterli
+
+
+
+-Birden fazla fetch yapıcaksan aynanda bunları const[fetch1,fetch2] = await Promise.All([fetch(url1),fetch(url2)]) daha sonra await Promise.All([fetch1.json(),fetch2.json()])
+
+-prisma 1. adım => npm i -D prisma
+-prisma 2. adım => npm i @prisma/client
+-prisma 3.adom  => db sayfasını oluştur clientprisma çalıştır
+-prisma 4.adım  => npx prisma init
+-bu projede postgresql kulllancaz ve bunu neon üzerinden yapıcaz
+-neon yüklüyoruz ve bize hangi ortamda kullanmak istediğimize göre bilgileri veriyor. Örnek olarak bu projede prismayı seçtik.
+-Daha sonra prisma dosyası için de model tanımla
+-Daha sonra npx prisma generate yaz fakat bunu yapmak için generate client tanımlamasını yap ilk önce. Generate işlemini her models değiştikten sonra yapmalıyız ve daha sonra db'ye puslamalıyız.
+-Daha sonra npx prisma db push yapıcaz dataları iletmek için ve neonda table altında verileri bulabilirsin tablo olarak
+-şifreler için önce "npm i bcrypt" daha sonra npm i -D @types/bcrypt
+
+
+
+
+
+-1.adım next auth için npm i next-auth@beta yaparak yükleme yapabiliriz.
+-2.adım auth.js sayfasını oluşturup tanımlamaları yapıyoruz
+-3.adım api altında next-auth folder oluştur.
+-4.adım secret keyi al. daha sonra env dosyasına "AUTH_SECRET="<secret_key>" " olarak ekle veya siteden onlinede alabiliriz veya terminale "openssl rand -hex 32" yazabiliriz
+-5.adım middleware dosyasını tanımla en root klasörde. middleware içinde path'deki sayfa isimlerini middleware içindeki fonksiyonda yazarak çağırabiliriz. Mesela sadece login sayfasını yazarsak matcher içine sadece login sayfasına girdiğimiz zaman fonk. çalışır. diğer sayfaları baz almaz
+-eğerki " matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"], " kullanırsak bize gittiğimiz her sayfanın pathname bilgisi verir.
+-const isLoggedIn = !!req.auth; ifadesi ile login olup olmama durumunu true veya false olarak alabiliriz. !! boolen değer döndürmemizde işe yarar
+-ekstra güvenlik için  "auth.config.js" dosyası oluşturup orada config tanımlamasını yapabiliriz. bunu yaptığımız zaman auth.js için deki Nextauth:Providers alanına auth.config.js dosyasını implement etmemiz gerekir. bu dosya oluşturmazsak ilk halinde ki gibi kalabilir : NextAuth({
+    providers: [Github]})
+
+-next.config.js'den sonra npm i @auth/prisma-adapter-D yüklü oldundan emin ol
+
+-Next-auth için , database adapterstan hangi database bağlancaksak onu seçiyoruz ve prisma için "npm i @auth/prisma-adapter" yüklüyoruz.
+-npx prisma studio ile kullanıcıları listeleyebiliriz
+
+
+
+67859515181
